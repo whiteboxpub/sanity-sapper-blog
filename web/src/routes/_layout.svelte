@@ -1,22 +1,31 @@
 <script>
-	import Nav from '../components/Nav.svelte';
-
-	export let segment;
+	import Header from '../components/Header.svelte';
+import Footer from '../components/Footer.svelte';
 </script>
 
 <style>
-	main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
+	.body-wrapper {
 		margin: 0 auto;
-		box-sizing: border-box;
+		position: relative;
+		display: block;
+		overflow: hidden;
+	}
+	@media screen and (min-width: 960px) {
+		.body-wrapper {
+			padding-top: 10em;
+		}
+	}
+	.upper-wrapper {
+		position: static;
 	}
 </style>
 
-<Nav {segment}/>
+<Header/>
 
-<main>
-	<slot></slot>
+<main class="body-wrapper grid-w-gutters">
+	<div class="upper-wrapper clearfix column col-12-across">
+		<slot></slot>
+	</div>
 </main>
+
+<Footer/>
