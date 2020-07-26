@@ -60,7 +60,7 @@
 			padding-top: 10em;
 		}
 	}
-	.upper-wrapper {
+	:global(.upper-wrapper) {
 		position: static;
 	}
 </style>

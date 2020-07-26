@@ -3,7 +3,7 @@
 </script>
 <style>
   .left-sidebar .event-list p,
-  .left-sidebar .location-list p {
+  :global(.left-sidebar .location-list p) {
     font-size: 13px;
   }
 
@@ -19,13 +19,13 @@
   }
 
   .event-item:nth-child(-n+3),
-  .event-list.reveal .event-item {
+  :global(.event-list.reveal .event-item) {
     margin-bottom: 1em;
       height: auto;
       max-height: 200px;
   }
 
-  .event-item p {
+  :global(.event-item p) {
     color: inherit;
     font-family: inherit;
     font-size: 12px;
@@ -51,10 +51,10 @@
   .event-list span.open {
     display: none;
   }
-  .event-list.reveal span.closed {
+  :global(.event-list.reveal span.closed) {
     display: none;
   }
-  .event-list.reveal span.open {
+  :global(.event-list.reveal span.open) {
     display: inline;
   }
 </style>

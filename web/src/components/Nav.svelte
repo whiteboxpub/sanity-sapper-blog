@@ -45,7 +45,7 @@
 	.main-nav:not([class*="col"]) {
 		width: 100%;
 	}
-	.main-nav.open {
+	:global(.main-nav.open) {
 		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
