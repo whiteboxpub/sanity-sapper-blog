@@ -1,3 +1,6 @@
+<script>
+  export let locations;
+</script>
 <style>
   /*store locations*/
   .sidebar-item:nth-child(3) {
@@ -19,8 +22,10 @@
   <h2 class="section-title">In-Store Locations</h2>
   <ul class="location-list">
     <!-- each bookstore location -->
+    {#each locations as {name, address, city, state, zip}}
     <li class="location-item">
-      <p class="location-address"><b>row_location_name</b><br> Address<br> City, State Zip</p>
+      <p class="location-address"><b>{name}</b><br> {address}<br> {city}, {state} {zip}</p>
     </li>
+    {/each}
   </ul>
 </section>

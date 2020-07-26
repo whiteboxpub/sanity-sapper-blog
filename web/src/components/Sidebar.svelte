@@ -1,8 +1,11 @@
 <script>
-import Events from "./Events.svelte";
-import Bookstore from "./Bookstore.svelte";
-import Locations from "./Locations.svelte";
+  import Events from "./Events.svelte";
+  import Bookstore from "./Bookstore.svelte";
+  import Locations from "./Locations.svelte";
+  import { getContext } from 'svelte'
 
+  const pageData$ = getContext('pageData')
+  $: pageData = $pageData$
 </script>
 <style>
   .sticky-spacer {
@@ -43,8 +46,8 @@ import Locations from "./Locations.svelte";
 </style>
 <div class="sticky-spacer column col-3-across">
   <div class="left-sidebar column col-12-across">
-    <Events/>
+    <Events events={pageData.events}/>
     <Bookstore/>
-    <Locations/>
+    <Locations locations={pageData.locations}/>
   </div>
 </div>

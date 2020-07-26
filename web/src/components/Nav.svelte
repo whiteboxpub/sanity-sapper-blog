@@ -1,5 +1,30 @@
 <script>
-	export let segment;
+	import { onMount } from 'svelte';
+
+	export let navItems;
+	let navHash;
+	let title = "Home";
+	// export let hash;
+	function capFirstLetter(string) {
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+	function scrollTo({ target }) {
+		let hash = target.getAttribute('href');
+		let sectionElement = document.querySelector(hash);
+		let sectionName = hash.slice(1).split("_").map(word => {
+			return capFirstLetter(word);
+		}).join(" ");
+
+		title = sectionName !== "" ? sectionName : "Home";
+
+		sectionElement.scrollTop += 53;
+    sectionElement.scrollIntoView({
+      behavior: 'smooth'
+		});
+
+		history.pushState({}, null, hash);
+		navHash = hash;
+	}
 </script>
 
 <style>
@@ -94,15 +119,15 @@
 		}
 	}
 </style>
+<svelte:head>
+	<title>{title} · Mrs. Jeanne</title>
+</svelte:head>
 
 <nav class="main-nav col-9-across s-twelve">
 	<ul>
-		<li class='{segment === "author" ? "mobile-active" : ""}'><a href='#author'>Author</a></li>
-		<li class='{segment === "events" ? "mobile-active" : ""}'><a href='#events'>Events</a></li>
-		<li class='{segment === "bookstore" ? "mobile-active" : ""}'><a href='#bookstore'>Bookstore</a></li>
-		<li class='{segment === "creative_process" ? "mobile-active" : ""}'><a href='#creative_process'>Creative Process</a></li>
-		<li class='{segment === "artwork" ? "mobile-active" : ""}'><a href='#artwork'>Artwork</a></li>
-
+		{#each navItems as nav}
+			<li class={navHash === `#${nav.link}` ? "mobile-active" : ""}><a href='#{nav.link}' on:click|preventDefault={scrollTo}>{nav.title}</a></li>
+		{/each}
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 		<!-- <li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li> -->

@@ -8,13 +8,19 @@ import Image from './Image.svelte';
 import Code from './Code.svelte';
 import Author from './Author.svelte';
 import Link from './Link.svelte';
+import Anchor from './Anchor.svelte';
+import SectionSubtitle from './SectionSubtitle.svelte';
 
 const urlFor = source => urlBuilder(client).image(source);
-
 export default {
   marks: {
     link: ({ children, mark }) => ({
       component: Link,
+      childNodes: children,
+      props: mark,
+    }),
+    internalLink: ({children, mark}) => ({
+      component:Anchor,
       childNodes: children,
       props: mark,
     }),
@@ -38,6 +44,10 @@ export default {
         code,
         language,
       },
+    }),
+    sectionTitle: ({children}) => ({
+      component: SectionSubtitle,
+      childNodes: children,
     }),
     authorReference: ({ children, node: { author } }) => ({
       component: Author,
