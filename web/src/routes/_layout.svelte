@@ -1,6 +1,9 @@
 <script context="module">
 	import client from '../sanityClient'
 	export async function preload() {
+		let customStyles = [
+			'title'
+		];
 		let query = `{
 			"navItems": *[_type == "siteSettings"]{navigation}[0],
 			"events": *[_type == "events"],
@@ -21,8 +24,17 @@
 		const results = await client
 		.fetch(query)
 		.then((data) => {
-			let {navItems : {navigation}, ...rest} = data;
-			return {navItems: navigation.items, ...rest};
+			let {navItems : {navigation}, sections,...rest} = data;
+			console.log({...sections})
+			sections.map(section => {
+				return section.body.map(block => {
+					if(customStyles.includes(block.style)) {
+						block._type = block.style
+					}
+					return block;
+				});
+			})
+			return {navItems: navigation.items, sections,...rest};
 		})
 		.catch(err => console.warn(500, err))
 		let {navItems, ...pageData} = results;
@@ -35,17 +47,18 @@
 	import Footer from '../components/Footer.svelte';
 	export let navItems;
 	export let pageData;
+	export let segment;
 
   import { setContext } from 'svelte'
 	import { writable } from 'svelte/store'
 	
   const pageData$ = writable(pageData)
-
-  // this updates the store's value when `segment` changes
-  // syntactic sugar for: segment$.set(segment)
+  const segment$ = writable(segment)
   $: $pageData$ = pageData
+  $: $segment$ = segment
 
   setContext('pageData', pageData$)
+  setContext('segment', segment$)
 </script>
 
 <style>

@@ -5,7 +5,8 @@
   import { getContext } from 'svelte'
 
   const pageData$ = getContext('pageData')
-  $: pageData = $pageData$
+	$: pageData = $pageData$
+	$: console.log({sections: pageData.sections})
 </script>
 <style>
 	:global(.main-content .home-author div, 
@@ -71,14 +72,14 @@
 			{#each pageData.sections as {title, hash, body}}
 			 <div id={hash}>
 				<BlockContent blocks={body} {serializers}/>
-				<p><img alt="hello text" class="img_full_width" src="/assets/images/hello.png" /></p>
+				<!-- <p><img alt="hello text" class="img_full_width" src="/assets/images/hello.png" /></p>
 				<p><img alt="classroom activities" class="img_full_width" src="/assets/images/campaigns_1_image.jpg" /></p>
 				<p class="section-subtitle">Welcome to Mrs. Jeanne&rsquo;s Website!</p>
 				<p>We are so excited that you decided to learn more about Jeanne and her books.</p>
 				<p>Over the course of many years while Jeanne was teaching kindergarten, she collected ideas for books which she stored in a filing cabinet in her classroom. Finally in 2013, Jeanne decided to establish Jeanne Kay Publishing as a way to pursue her passion for writing and illustrating children&rsquo;s books.</p>
 				<p>Fast forward and Jeanne is the proud author and illustrator of Mama, How Does The Wind Start To Blow?, and Papa, Why Does The Sun Shine? both recipients of the Children&rsquo;s Moonbeam Award and Children&rsquo;s Literary Classics Seal of Approval.</p>
 				<p>Jeanne resides in Colfax, Wisconsin with her husband, Gerry, dog, four horses, and two barn cats. Her four children are all grown up and live across the midwest, visiting home often. Jeanne has enjoyed visiting schools and libraries to talk to students about writing and illustrating books. Interested in a visit?</p>
-				<p><a class="content-link" href="/contact/" onclick="navigationScroll(this); return false;">Contact Mrs. Jeanne</a></p>
+				<p><a class="content-link" href="/contact/" onclick="navigationScroll(this); return false;">Contact Mrs. Jeanne</a></p> -->
 			 </div>
 			{/each}
 		</section>

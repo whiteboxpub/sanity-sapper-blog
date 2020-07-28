@@ -20,9 +20,11 @@ export default {
       props: mark,
     }),
     internalLink: ({children, mark}) => ({
-      component:Anchor,
+      component: Anchor,
       childNodes: children,
-      props: mark,
+      props: {
+        hash: mark.hash
+      }
     }),
   },
   types: {
@@ -45,16 +47,16 @@ export default {
         language,
       },
     }),
-    sectionTitle: ({children}) => ({
-      component: SectionSubtitle,
-      childNodes: children,
-    }),
     authorReference: ({ children, node: { author } }) => ({
       component: Author,
       childNodes: children,
       props: {
         author,
       },
+    }),
+    title: ({children}) => ({
+      component: SectionSubtitle,
+      childNodes: children,
     }),
   },
 };

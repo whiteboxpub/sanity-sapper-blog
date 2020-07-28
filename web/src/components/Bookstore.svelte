@@ -21,7 +21,7 @@
 
 <section class="sidebar-item" id="bookstore">
   <h2 class="section-title">Bookstore</h2>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>	
   <script type="text/javascript" src="/assets/js/sticky-kit.js"></script>
   <a class="sq-embed-menu" data-menu-accent-color="164670" data-menu-border="hide" data-menu-item-descriptions="hide" data-menu-item-images="large" data-menu-template="row" href="https://mkt.com/jeannekaypublishing">Order Online</a> 
   <script>

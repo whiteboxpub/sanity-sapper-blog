@@ -1,5 +1,5 @@
 import React from 'react'
-const subtitleRender = props => (
+const titleRender = props => (
   <p style={{fontSize: "26px",
     fontFamily: "Sweet Pea",
     textAlign: "center",
@@ -14,9 +14,9 @@ export default {
       title: 'Block',
       type: 'block',
       styles: [
-        { title: 'Seciton Title', value: 'sectionTitle',
+        { title: 'Seciton Title', value: 'title',
           blockEditor: {
-            render: subtitleRender,
+            render: titleRender,
           }
         },
       ],

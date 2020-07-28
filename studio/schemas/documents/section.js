@@ -5,6 +5,21 @@ export default {
   type: 'document',
   title: 'Section Content',
   fields: [
+    // {
+    //   name: 'title',
+    //   type: 'string',
+    //   title: 'Title',
+    //   description: 'Titles should be catchy, descriptive, and not too long'
+    // },
+    // {
+    //   name: 'content',
+    //   type: 'array',
+    //   title: 'Sections',
+    //   description: 'Add, edit, and reorder sections',
+    //   of: [
+    //     { type: 'sectionContent' },
+    //   ],
+    // },
     {
       name: 'title',
       type: 'string',
@@ -66,17 +81,17 @@ export default {
   preview: {
     select: {
       title: 'title',
-      publishedAt: 'publishedAt',
-      slug: 'hash',
+      // publishedAt: 'publishedAt',
+      // slug: 'hash',
     },
-    prepare ({title = 'No title', publishedAt, slug, }) {
-      const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/#${slug.current}/`
-      return {
-        title,
-        release: publishedAt ? dateSegment: 'Missing publishing date',
-        subtitle: publishedAt ? path : 'Missing publishing date'
-      }
-    }
+    // prepare ({title = 'No title', publishedAt, slug, }) {
+    //   const dateSegment = format(publishedAt, 'YYYY/MM')
+    //   const path = `/#${slug.current}/`
+    //   return {
+    //     title,
+    //     release: publishedAt ? dateSegment: 'Missing publishing date',
+    //     subtitle: publishedAt ? path : 'Missing publishing date'
+    //   }
+    // }
   }
 }

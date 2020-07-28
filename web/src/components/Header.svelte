@@ -17,8 +17,8 @@
   import Hamburger from './Hamburger.svelte';
   import SunLogo from './SunLogo.svelte';
   export let navItems;
-  export let posY;
-  export let headerHeight;
+  let posY;
+  let headerHeight;
 </script>
 
 <style>

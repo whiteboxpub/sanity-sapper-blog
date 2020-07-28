@@ -26,6 +26,7 @@ import nav from './objects/nav'
 import openGraph from './objects/openGraph'
 import mainImage from './objects/mainImage'
 import authorReference from './objects/authorReference'
+import sectionContent from './objects/sectionContent'
 
 // const allPlugs = Object.values(plugs).map((plug) => {
 //   return { ...plug, fields: plugDefaultFields.concat(plug.fields) }
@@ -55,7 +56,8 @@ export default createSchema({
     bodyPortableText,
     bioPortableText,
     excerptPortableText,
-    simpleBlockContent
+    simpleBlockContent,
+    sectionContent
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
